@@ -78,8 +78,8 @@ $container-max-width: 1140px+$gutter * 2;
 // Variables for @include fluid-type mixin;
 // This mixin allow fonts to grow from $min viewport width to $max viewport width between sizes that are provided
 //
-$fluid-min: map-get($breakpoints, 'xs-phone');
-$fluid-max: map-get($breakpoints, 'widescreen');
+$fluid-min: map-get($breakpoints, 'extra-small');
+$fluid-max: map-get($breakpoints, 'extra-large');
 
 $font-weight-thin: 100;
 $font-weight-normal: 400;
