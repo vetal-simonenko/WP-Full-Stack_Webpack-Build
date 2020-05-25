@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+// 1. Configuration and helpers
+@import 'abstracts/variables';
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+
+// 2. Vendors: include media mixins and mormalize imported from node_modules
+@import '~include-media/dist/include-media';
+@import 'vendors/normalize';
+@import 'vendors/icomoon/styles';
+
+// 3. Libs: include libs
+@import 'libs';
+
+// 3. Base styles and elements
+@import 'base/base';
+@import 'base/helpers';
+@import 'base/fonts';
+@import 'base/typography';
+@import 'base/forms';
+
+// 4. Layout-related sections
+@import 'layout/header';
+@import 'layout/common';
+@import 'layout/footer';
+
+// 5. Components
+@import 'components/button';
+
+// 6. Page-specific styles
+// @import 'pages/home';
+
+// 7. Themes
+// @import 'themes/themes';

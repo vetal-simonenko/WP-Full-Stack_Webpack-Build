@@ -1,0 +1,13 @@
+{
+  "rules": {
+    "no-new": "off"
+  },
+  "env": {
+    "jquery": true,
+    "node": true,
+    "es6": true
+  },
+
+  "extends": ["standard"],
+  "plugins": ["import", "standard"]
+}

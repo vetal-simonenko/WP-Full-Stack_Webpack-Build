@@ -1,0 +1,284 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Base\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-11-12 13:52+0200\n"
+"PO-Revision-Date: 2012-11-12 14:21+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../404.php:6
+#: ../archive.php:54
+#: ../index.php:33
+#: ../page.php:22
+#: ../single.php:37
+#: ../template-testimonials.php:50
+msgid "Not Found"
+msgstr ""
+
+#: ../404.php:9
+#: ../archive.php:57
+#: ../index.php:36
+#: ../page.php:25
+#: ../single.php:40
+#: ../template-testimonials.php:53
+msgid "Sorry, but you are looking for something that isn't here."
+msgstr ""
+
+#: ../archive.php:10
+#, php-format
+msgid "Archive for the &#8216;%s&#8217; Category"
+msgstr ""
+
+#: ../archive.php:12
+#, php-format
+msgid "Posts Tagged &#8216;%s&#8217;"
+msgstr ""
+
+#: ../archive.php:14
+#: ../archive.php:16
+#: ../archive.php:18
+msgid "Archive for"
+msgstr ""
+
+#: ../archive.php:20
+msgid "Author Archive"
+msgstr ""
+
+#: ../archive.php:22
+msgid "Blog Archives"
+msgstr ""
+
+#: ../archive.php:30
+#: ../index.php:9
+#: ../search.php:15
+msgid "Permanent Link to"
+msgstr ""
+
+#: ../archive.php:31
+#: ../index.php:10
+#: ../single.php:11
+msgid "by"
+msgstr ""
+
+#: ../archive.php:38
+#: ../index.php:17
+#: ../single.php:18
+msgid "Posted in"
+msgstr ""
+
+#: ../archive.php:39
+#: ../index.php:18
+#: ../single.php:19
+msgid "No Comments"
+msgstr ""
+
+#: ../archive.php:39
+#: ../index.php:18
+#: ../single.php:19
+msgid "1 Comment"
+msgstr ""
+
+#: ../archive.php:39
+#: ../index.php:18
+#: ../single.php:19
+msgid "% Comments"
+msgstr ""
+
+#: ../archive.php:40
+#: ../index.php:19
+#: ../single.php:20
+msgid "<li>Tags: "
+msgstr ""
+
+#: ../archive.php:47
+#: ../index.php:26
+#: ../search.php:24
+#: ../template-testimonials.php:36
+msgid "Older Entries &raquo;"
+msgstr ""
+
+#: ../archive.php:48
+#: ../index.php:27
+#: ../search.php:25
+#: ../template-testimonials.php:37
+msgid "&laquo; Newer Entries"
+msgstr ""
+
+#: ../comments.php:8
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+
+#: ../comments.php:18
+msgid "at"
+msgstr ""
+
+#: ../comments.php:18
+msgid "said:"
+msgstr ""
+
+#: ../comments.php:20
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: ../comments.php:27
+msgid "Reply"
+msgstr ""
+
+#: ../comments.php:45
+msgid "No Responses"
+msgstr ""
+
+#: ../comments.php:45
+msgid "One Response"
+msgstr ""
+
+#: ../comments.php:45
+msgid "% Responses"
+msgstr ""
+
+#: ../comments.php:45
+msgid "to"
+msgstr ""
+
+#: ../comments.php:55
+msgid "&laquo; Older Comments"
+msgstr ""
+
+#: ../comments.php:56
+msgid "Newer Comments &raquo;"
+msgstr ""
+
+#: ../comments.php:68
+msgid "Comments are closed."
+msgstr ""
+
+#: ../comments.php:80
+msgid "Leave a Reply"
+msgstr ""
+
+#: ../comments.php:80
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: ../comments.php:85
+msgid "logged in"
+msgstr ""
+
+#: ../comments.php:85
+msgid "to post a comment."
+msgstr ""
+
+#: ../comments.php:90
+msgid "Logged in as"
+msgstr ""
+
+#: ../comments.php:90
+msgid "Log out of this account"
+msgstr ""
+
+#: ../comments.php:90
+msgid "Log out &raquo;"
+msgstr ""
+
+#: ../comments.php:97
+msgid "Name"
+msgstr ""
+
+#: ../comments.php:99
+msgid "E-Mail (will not be published)"
+msgstr ""
+
+#: ../comments.php:101
+msgid "Website"
+msgstr ""
+
+#: ../comments.php:104
+msgid "Comment"
+msgstr ""
+
+#: ../comments.php:106
+msgid "Submit Comment"
+msgstr ""
+
+#: ../functions.php:25
+#: ../sidebar.php:3
+msgid "Default Sidebar"
+msgstr ""
+
+#: ../functions.php:40
+msgid "Primary Navigation"
+msgstr ""
+
+#: ../functions.php:94
+msgid "Search"
+msgstr ""
+
+#: ../search.php:8
+msgid "Search Results"
+msgstr ""
+
+#: ../search.php:31
+msgid "No posts found."
+msgstr ""
+
+#: ../search.php:34
+msgid "Try a different search?"
+msgstr ""
+
+#: ../searchform.php:1
+msgid "Enter search terms&hellip;"
+msgstr ""
+
+#: ../single.php:30
+msgid "%link &raquo;"
+msgstr ""
+
+#: ../single.php:31
+msgid "&laquo; %link"
+msgstr ""
+
+#: ../widgets.php:7
+msgid "Arbitrary text or HTML"
+msgstr ""
+
+#: ../widgets.php:9
+msgid "Text"
+msgstr ""
+
+#: ../widgets.php:39
+#: ../widgets.php:127
+msgid "Title:"
+msgstr ""
+
+#: ../widgets.php:44
+msgid "Automatically add paragraphs"
+msgstr ""
+
+#: ../widgets.php:56
+msgid "The most recent posts from specific category on your site"
+msgstr ""
+
+#: ../widgets.php:57
+msgid "Recent Posts From Specific Category"
+msgstr ""
+
+#: ../widgets.php:79
+msgid "Recent Posts"
+msgstr ""
+
+#: ../widgets.php:132
+msgid "Category"
+msgstr ""
+
+#: ../widgets.php:137
+msgid "Number of posts to show:"
+msgstr ""
+

@@ -1,0 +1,133 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+
+$breakpoints: (
+  "extra-small": 320px,
+  "small": 375px,
+  "normal": 520px,
+  "extra-normal": 640px,
+  "medium": 768px,
+  "large": 1024px,
+  "extra-large": 1280px,
+  "huge": 1366px,
+  "extra-huge": 1440px,
+  "giant": 1600px
+);
+
+// keywords
+$media-expressions: ('screen': 'screen',
+  'print': 'print',
+  'handheld': 'handheld',
+  'landscape': '(orientation: landscape)',
+  'portrait': '(orientation: portrait)',
+  'retina2x': '(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)',
+  'retina3x': '(-webkit-min-device-pixel-ratio: 2.5), (min-resolution: 240dpi)'
+);
+
+
+// Color system
+
+$white: #fff;
+$black: #000;
+
+// body
+//
+// settings for the `<body>` element.
+
+$body-bg: $white;
+$body-color: $black;
+
+
+$link-color: #0366d6;
+$link-decoration: none;
+$link-hover-color: darken(#0366d6, 5%);
+$link-hover-decoration: none;
+
+// border radius
+$rounded-circle: 50%;
+
+
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+
+// stylelint-disable value-keyword-case
+$font-family-sans-serif: 'Helvetica Neue',
+Arial,
+'Noto Sans',
+sans-serif;
+$font-family-sans-serif-secondary: $font-family-sans-serif;
+$font-family-base: $font-family-sans-serif;
+$base-font-path: '../fonts';
+
+$line-height-base: 1.5;
+$rem-base: 10px;
+
+
+// container max width, used for .container element
+$gutter: 15px;
+$container-max-width: 1140px+$gutter * 2;
+
+
+// Variables for @include fluid-type mixin;
+// This mixin allow fonts to grow from $min viewport width to $max viewport width between sizes that are provided
+//
+$fluid-min: map-get($breakpoints, 'xs-phone');
+$fluid-max: map-get($breakpoints, 'widescreen');
+
+$font-weight-thin: 100;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-heavy: 900;
+
+
+$font-sizes: ('xl': 18px,
+  'lg': 16px,
+  'base': 14px,
+  'md': 12px,
+  'sm': 10px,
+);
+
+$font-sizes-max: ('xl': 20px,
+  'lg': 18px,
+  'base': 16px,
+  'md': 14px,
+  'sm': 12px,
+);
+
+$headings-sizes: ('h1': 30px,
+  'h2': 26px,
+  'h3': 22px,
+  'h4': 20px,
+  'h5': 18px,
+  'h6': 16px,
+);
+
+$headings-sizes-max: ('h1': 40px,
+  'h2': 36px,
+  'h3': 32px,
+  'h4': 30px,
+  'h5': 28px,
+  'h6': 26px,
+);
+
+$headings-margin-bottom: 1em;
+$headings-font-weight: inherit;
+$headings-line-height: 1.2;
+
+
+// Paragraphs
+
+$paragraph-margin-bottom: 1.5em;
+
+// Base transition function
+$transition-duration-base: 0.35s;
+$transition-easing-base: cubic-bezier(0.3, 0.86, 0.36, 0.95);

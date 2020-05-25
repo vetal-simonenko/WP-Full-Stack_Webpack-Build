@@ -1,0 +1,116 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the common layout of the site
+// -----------------------------------------------------------------------------
+
+body {
+  @include fluid-type(map-get($font-sizes, 'base'), map-get($font-sizes-max, 'base'));
+  background-color: $body-bg;
+
+  .menu--opened & {
+    overflow: hidden;
+  }
+}
+
+
+/**
+ * Main content containers
+ * 1. Make the container full-width with a maximum width
+ * 2. Center it in the viewport
+ * 3. Leave some space on the edges, especially valuable on small screens
+ */
+
+.container {
+  max-width: $container-max-width;
+  /* 1 */
+  margin-left: auto;
+  /* 2 */
+  margin-right: auto;
+  /* 2 */
+  padding-left: $gutter;
+  /* 3 */
+  padding-right: $gutter;
+  /* 3 */
+  width: 100%;
+  /* 1 */
+
+  &--fluid {
+    max-width: 100%;
+  }
+}
+
+/*
+  Footer at bottom layout by default.
+  To disable - remove flex styles amd min-height
+*/
+
+.wrapper {
+  width: 100%;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  // iOS viewport height trick: variables --full-viewport is passed from JS
+  .touchevents & {
+    min-height: var(--full-viewport);
+  }
+}
+
+/*
+  Element that will push footer to the end of page.
+  Didn't used as <main> tag, because mainly - structure of pages should be more
+  deeper for most of the designs, and <main> will be inside.
+*/
+
+.page-holder {
+  flex-grow: 1;
+  overflow: hidden;
+  width: 100%;
+}
+
+img {
+  vertical-align: top;
+  max-width: 100%;
+  height: auto;
+}
+
+#wrapper {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+
+  // iOS viewport height trick: variables --full-viewport is passed from JS
+  .touchevents & {
+    min-height: var(--full-viewport);
+  }
+}
+
+.wrapper-inner {
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr auto;
+  -ms-grid-template-columns: minmax(0, 1fr);
+  -ms-grid-columns: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
+
+  #header {
+    -ms-grid-row: 1;
+    grid-row: 1;
+  }
+
+  #main {
+    -ms-grid-row: 2;
+    grid-row: 2;
+  }
+
+  #footer {
+    -ms-grid-row: 3;
+    grid-row: 3;
+  }
+}
