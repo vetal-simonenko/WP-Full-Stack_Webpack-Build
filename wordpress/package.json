@@ -1,13 +1,13 @@
 {
-	"name": "p2h-asap-wp-theme",
+	"name": "wordpress-webpack-build",
 	"version": "0.0.1",
-	"description": "Wordpress Base Theme",
+	"description": "Wordpress Webpack Build",
 	"scripts": {
 		"start": "cross-env NODE_ENV=development node ./scripts/start.js",
 		"build": "cross-env NODE_ENV=production node ./scripts/build.js",
 		"postinstall": "npm run build"
 	},
-	"author": "p2h",
+	"author": "Wordpress Webpack Build",
 	"license": "MIT",
 	"dependencies": {
 		"@babel/polyfill": "^7.8.7",
