@@ -35,7 +35,7 @@ function my_acf_init() {
 
 add_filter( 'block_categories', 'my_plugin_block_categories', 10, 2 );
 function my_plugin_block_categories( $categories, $post ) {
-  return array_merge($categories,[['slug'   => 'theme-blocks', 'title'  => __( 'Theme blocks', 'wordpress' ) ]]);
+  return array_merge($categories,[['slug'   => 'theme-blocks', 'title'  => __( 'Theme blocks', 'base' ) ]]);
 }
 
 function my_acf_block_render_callback( $block ) {

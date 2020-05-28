@@ -14,7 +14,7 @@ if ( file_exists( ABSPATH . '/localhost-functions.php' ) ) {
 function seo_warning() {
   if( get_option( 'blog_public' ) ) return;
 
-  $message = __( 'You are blocking access to robots. You must go to your <a href="%s">Reading</a> settings and uncheck the box for Search Engine Visibility.', 'wordpress' );
+  $message = __( 'You are blocking access to robots. You must go to your <a href="%s">Reading</a> settings and uncheck the box for Search Engine Visibility.', 'base' );
 
   echo '<div class="error"><p>';
   printf( $message, admin_url( 'options-reading.php' ) );
@@ -53,7 +53,7 @@ remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 
 function theme_localization () {
-  load_theme_textdomain( 'wordpress', get_template_directory() . '/languages' );
+  load_theme_textdomain( 'base', get_template_directory() . '/languages' );
 }
 add_action( 'after_setup_theme', 'theme_localization' );
 
@@ -113,7 +113,7 @@ function wp_admin_bar_valid_search_menu( $wp_admin_bar ) {
 
   $form  = '<form action="' . esc_url( home_url( '/' ) ) . '" method="get" id="adminbarsearch"><div>';
   $form .= '<input class="adminbar-input" name="s" id="adminbar-search" tabindex="10" type="text" value="" maxlength="150" />';
-  $form .= '<input type="submit" class="adminbar-button" value="' . __( 'Search', 'wordpress' ) . '"/>';
+  $form .= '<input type="submit" class="adminbar-button" value="' . __( 'Search', 'base' ) . '"/>';
   $form .= '</div></form>';
 
   $wp_admin_bar->add_menu( array(
@@ -165,8 +165,8 @@ function theme_get_the_password_form() {
   $post = get_post( $post );
   $label = 'pwbox-' . ( empty($post->ID) ? rand() : $post->ID );
   $output = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" class="post-password-form" method="post">
-  <p>' . __( 'This content is password protected. To view it please enter your password below:', 'wordpress' ) . '</p>
-  <p><label for="' . $label . '">' . __( 'Password:', 'wordpress' ) . '</label> <input name="post_password" id="' . $label . '" type="password" size="20" /> <input type="submit" name="Submit" value="' . esc_attr__( 'Submit', 'wordpress' ) . '" /></p></form>
+  <p>' . __( 'This content is password protected. To view it please enter your password below:', 'base' ) . '</p>
+  <p><label for="' . $label . '">' . __( 'Password:', 'base' ) . '</label> <input name="post_password" id="' . $label . '" type="password" size="20" /> <input type="submit" name="Submit" value="' . esc_attr__( 'Submit', 'base' ) . '" /></p></form>
   ';
   return $output;
 }
@@ -220,14 +220,14 @@ add_action( 'admin_init',
   function (){
     add_settings_section(
       'eg_setting_section',
-      __( 'Date archive link', 'wordpress' ),
+      __( 'Date archive link', 'base' ),
       function () {},
       'reading'
     );
 
     add_settings_field(
       'eg_setting_name',
-      __( 'Type', 'wordpress' ),
+      __( 'Type', 'base' ),
       'eg_setting_callback_function',
       'reading',
       'eg_setting_section'
@@ -242,9 +242,9 @@ function eg_setting_callback_function(){
   else $type = "month";
   echo '
   <select name="eg_date_archive_link_type">
-  <option ' . selected( $type, 'day', false ) . ' value="day">' . __( 'Day', 'wordpress' ).'</option>
-  <option ' . selected( $type, 'month', false ) . ' value="month">' . __( 'Month', 'wordpress' ).'</option>
-  <option ' . selected( $type, 'year', false ) . ' value="year">' . __( 'Year', 'wordpress' ).'</option>
+  <option ' . selected( $type, 'day', false ) . ' value="day">' . __( 'Day', 'base' ).'</option>
+  <option ' . selected( $type, 'month', false ) . ' value="month">' . __( 'Month', 'base' ).'</option>
+  <option ' . selected( $type, 'year', false ) . ' value="year">' . __( 'Year', 'base' ).'</option>
   </select>
   ';
 }

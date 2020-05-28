@@ -6,9 +6,9 @@ class Widget_Recent_Posts_From_Category extends WP_Widget {
   function __construct() {
     $widget_ops = array(
       'classname' => 'widget_recent_entries_from_category',
-      'description' => __( 'The most recent posts from specific category on your site', 'wordpress' ),
+      'description' => __( 'The most recent posts from specific category on your site', 'base' ),
     );
-    parent::__construct( 'recent-posts-from-category', __( 'Recent Posts From Specific Category', 'wordpress' ), $widget_ops );
+    parent::__construct( 'recent-posts-from-category', __( 'Recent Posts From Specific Category', 'base' ), $widget_ops );
     $this->alt_option_name = 'widget_recent_entries_from_category';
 
     add_action( 'save_post',    array( &$this, 'flush_widget_cache' ) );
@@ -30,7 +30,7 @@ class Widget_Recent_Posts_From_Category extends WP_Widget {
     ob_start();
     extract( $args );
 
-    $title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Recent Posts', 'wordpress' ) : $instance['title'], $instance, $this->id_base );
+    $title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Recent Posts', 'base' ) : $instance['title'], $instance, $this->id_base );
     if ( ! $number = absint( $instance['number'] ) )
       $number = 10;
 
@@ -84,17 +84,17 @@ class Widget_Recent_Posts_From_Category extends WP_Widget {
     $number	= isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
     $cat	= isset( $instance['cat'] )    ? $instance['cat'] : 0;
     ?>
-    <p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'wordpress' ); ?></label>
+    <p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'base' ); ?></label>
       <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
       <p>
         <label>
-          <?php _e( 'Category', 'wordpress' ); ?>:
+          <?php _e( 'Category', 'base' ); ?>:
           <?php wp_dropdown_categories( array( 'name' => $this->get_field_name("cat"), 'selected' => $cat ) ); ?>
         </label>
       </p>
 
-      <p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of posts to show:', 'wordpress' ); ?></label>
+      <p><label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number of posts to show:', 'base' ); ?></label>
         <input id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
         <?php
       }

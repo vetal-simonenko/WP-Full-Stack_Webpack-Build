@@ -1,5 +1,4 @@
 import './../styles/style.scss'
-import '@babel/polyfill'
 import './utils/polyfills'
 import './utils/detectTouch'
 import './utils/responsiveHelper'
