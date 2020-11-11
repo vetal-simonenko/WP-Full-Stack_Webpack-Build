@@ -207,3 +207,195 @@ $animation-speed: .3s !default;
   $bg: str-replace($color, '#', '');
   background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 640'%3E %3Cpath fill='#{url-friendly-colour($color)}' d='M240.708 17.489c23.063 22.512 248.395 259.044 248.395 259.044 12.304 12.083 18.484 27.808 18.484 43.533s-6.179 31.449-18.484 43.422c0 0-225.333 236.644-248.395 259.044-23.063 22.512-64.554 24.056-89.107 0-24.607-23.946-26.539-57.436 0-86.845l206.739-215.622-206.739-215.623c-26.539-29.409-24.608-62.954 0-86.955 24.552-24.056 66.044-22.567 89.107 0z'%3E%3C/path%3E %3C/svg%3E");
 }
+@mixin triangle($size, $color, $direction) {
+  $width: nth($size, 1);
+  $height: nth($size, length($size));
+  $foreground-color: nth($color, 1);
+  $background-color: if(length($color) == 2, nth($color, 2), transparent);
+
+  height: 0;
+  width: 0;
+
+  @if ($direction==up) or ($direction==down) or ($direction==right) or ($direction==left) {
+    $width: $width / 2;
+    $height: if(length($size) > 1, $height, $height/2);
+
+    @if $direction==up {
+      border-bottom: $height solid $foreground-color;
+      border-left: $width solid $background-color;
+      border-right: $width solid $background-color;
+    }
+
+    @else if $direction==right {
+      border-bottom: $width solid $background-color;
+      border-left: $height solid $foreground-color;
+      border-top: $width solid $background-color;
+    }
+
+    @else if $direction==down {
+      border-left: $width solid $background-color;
+      border-right: $width solid $background-color;
+      border-top: $height solid $foreground-color;
+    }
+
+    @else if $direction==left {
+      border-bottom: $width solid $background-color;
+      border-right: $height solid $foreground-color;
+      border-top: $width solid $background-color;
+    }
+  }
+
+  @else if ($direction==up-right) or ($direction==up-left) {
+    border-top: $height solid $foreground-color;
+
+    @if $direction==up-right {
+      border-left: $width solid $background-color;
+    }
+
+    @else if $direction==up-left {
+      border-right: $width solid $background-color;
+    }
+  }
+
+  @else if ($direction==down-right) or ($direction==down-left) {
+    border-bottom: $height solid $foreground-color;
+
+    @if $direction==down-right {
+      border-left: $width solid $background-color;
+    }
+
+    @else if $direction==down-left {
+      border-right: $width solid $background-color;
+    }
+  }
+
+  @else if ($direction==inset-up) {
+    border-color: $background-color $background-color $foreground-color;
+    border-style: solid;
+    border-width: $height $width;
+  }
+
+  @else if ($direction==inset-down) {
+    border-color: $foreground-color $background-color $background-color;
+    border-style: solid;
+    border-width: $height $width;
+  }
+
+  @else if ($direction==inset-right) {
+    border-color: $background-color $background-color $background-color $foreground-color;
+    border-style: solid;
+    border-width: $width $height;
+  }
+
+  @else if ($direction==inset-left) {
+    border-color: $background-color $foreground-color $background-color $background-color;
+    border-style: solid;
+    border-width: $width $height;
+  }
+}
+
+// Overlay
+/// @example scss - Usage
+
+/// input
+/// selector {
+///    @include overlay();
+/// }
+/// output
+/// selector {
+///    left: 0;
+///    top: 0;
+///    right: 0;
+////   bottom: 0;
+/// }
+
+/// input
+/// selector {
+///    @include overlay(1px);
+/// }
+/// output
+/// selector {
+///    left: 1px;
+///    top: 1px;
+///    right: 1px;
+////   bottom: 1px;
+/// }
+
+/// input
+/// selector {
+///    @include overlay(1px,2px,3px,4px);
+/// }
+/// output
+/// selector {
+///    left: 1px;
+///    top: 2px;
+///    right: 3px;
+////   bottom: 4px;
+/// }
+
+@mixin overlay($left: 0, $top: $left, $right: $left, $bottom: $left) {
+  @if ($left == null) {$left: 0}
+  @if ($top == null) {$top: 0}
+  @if ($right == null) {$right: 0}
+  @if ($bottom == null) {$bottom: 0}
+  position: absolute;
+  left: $left;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+}
+
+// Position
+
+@mixin position($position, $args) {
+  @each $o in top right bottom left {
+    $i: index($args, $o);
+
+    @if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number {
+      #{$o}: nth($args, $i + 1);
+    }
+  }
+
+  position: $position;
+}
+
+@mixin absolute($args) {
+  @include position("absolute", $args);
+}
+
+@mixin fixed($args) {
+  @include position("fixed", $args);
+}
+
+@mixin relative($args) {
+  @include position("relative", $args);
+}
+
+// Simple grid
+@mixin flex-row($align: null, $justify: null, $gap: null) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: $align;
+  justify-content: $justify;
+
+  @if ($gap != null) {
+    margin-left: calc(#{$gap} * -1);
+    margin-right: calc(#{$gap} * -1);
+  }
+}
+
+%flex-row {
+  @include flex-row();
+}
+
+.flex-row {
+  @extend %flex-row;
+}
+
+@mixin flex-col($col, $sum, $gap: null) {
+  width: percentage($col/$sum);
+
+  @if ($gap != null) {
+    padding: 0 $gap;
+  }
+}

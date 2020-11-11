@@ -7,16 +7,17 @@
 /// @prop {Map} values - Values are actual breakpoints expressed in pixels
 
 $breakpoints: (
-  "extra-small": 320px,
-  "small": 375px,
-  "normal": 520px,
-  "extra-normal": 640px,
-  "medium": 768px,
-  "large": 1024px,
-  "extra-large": 1280px,
-  "huge": 1366px,
-  "extra-huge": 1440px,
-  "giant": 1600px,
+  'xs-phone': 320px,
+  's-phone': 375px,
+  'phone': 520px,
+  'phone-lg': 640px,
+  'tablet': 768px,
+  'desktop': 1024px,
+  'laptop': 1280px,
+  'widescreen': 1366px,
+  'widescreen-lg': 1440px,
+  'widescreen-xl': 1600px,
+  'widescreen-xxl': 1920px
 );
 
 // keywords
@@ -70,8 +71,8 @@ $container-max-width: 1140px + $gutter * 2;
 // Variables for @include fluid-type mixin;
 // This mixin allow fonts to grow from $min viewport width to $max viewport width between sizes that are provided
 //
-$fluid-min: map-get($breakpoints, "extra-small");
-$fluid-max: map-get($breakpoints, "giant");
+$fluid-min: map-get($breakpoints, "xs-phone");
+$fluid-max: map-get($breakpoints, "widescreen-xxl");
 
 $font-weight-thin: 100;
 $font-weight-normal: 400;

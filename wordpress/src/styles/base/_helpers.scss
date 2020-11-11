@@ -26,19 +26,88 @@
   white-space: nowrap;
 }
 
-
-/**
- * Hide element while making it readable for screen readers
- * Shamelessly borrowed from HTML5Boilerplate:
- * https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css#L119-L133
- */
-.visually-hidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
+.accessibility{
   position: absolute;
+  left: -10000px;
+  top: auto;
   width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.accessibility:focus{
+  position: static;
+  width: auto;
+  height: auto;
+}
+
+%hidden {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+}
+
+.hidden {
+  @extend %hidden;
+}
+
+%listreset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+%clearfix {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+.clearfix {
+  @extend %clearfix;
+}
+
+%transition {
+  transition: all 0.3s ease-in-out;
+}
+
+%resetButton {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.resetButton {
+  @extend %resetButton;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
 }

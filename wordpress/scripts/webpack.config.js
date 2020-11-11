@@ -1,12 +1,12 @@
 'use strict'
-
+const CONFIG = require('./config')
 const webpack = require('webpack')
 const autoprefixer = require('autoprefixer')
 const AssetsPlugin = require('assets-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const Copy = require('copy-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const WriteFilePlugin = require('write-file-webpack-plugin')
@@ -22,15 +22,15 @@ function resolveApp (relativePath) {
 }
 
 const DEV = process.env.NODE_ENV === 'development'
-const DEV_PUBLIC_PATH = `http://localhost:4000/wp-content/themes/${folderName}/build/`
+const DEV_PUBLIC_PATH = `${CONFIG.protocol}://${CONFIG.localDynamicAddress}${CONFIG.serverSubFolderName ? '/' + CONFIG.serverSubFolderName : ''}/wp-content/themes/${folderName}/build/`
 
 const paths = {
-  appSrc: resolveApp('src'),
-  appBuild: resolveApp('build'),
-  appIndexJs: resolveApp('src/js/main.js'),
-  appNodeModules: resolveApp('node_modules'),
-  stylelintConfig: resolveApp('stylelint.config.js'),
-  appStyles: resolveApp('src/styles/style.scss')
+  appSrc: resolveApp(CONFIG.src),
+  appBuild: resolveApp(CONFIG.build),
+  appIndexJs: resolveApp(CONFIG.indexJsFile),
+  appNodeModules: resolveApp(CONFIG.appNodeModules),
+  stylelintConfig: resolveApp(CONFIG.stylelintConfig),
+  appStyles: resolveApp(CONFIG.appStyles)
 }
 module.exports = {
   mode: DEV ? 'development' : 'production',
@@ -73,11 +73,7 @@ module.exports = {
       {
         test: /.scss$/,
         use: [{
-          loader: DEV ? 'style-loader' : MiniCssExtractPlugin.loader,
-          options: {
-            hmr: true,
-            sourceMap: DEV
-          }
+          loader: DEV ? 'style-loader' : MiniCssExtractPlugin.loader
         },
         {
           loader: 'css-loader',
@@ -131,8 +127,7 @@ module.exports = {
   },
   plugins: [
     DEV && new webpack.HotModuleReplacementPlugin(),
-    !DEV && new CleanWebpackPlugin(['build'], {
-      root: path.join(__dirname, '..'),
+    !DEV && new CleanWebpackPlugin({
       cleanStaleWebpackAssets: false
     }),
     !DEV && new MiniCssExtractPlugin({
@@ -146,7 +141,8 @@ module.exports = {
         output: {
           comments: false
         }
-      }
+      },
+      extractComments: false
     }),
     DEV && new webpack.NoEmitOnErrorsPlugin(),
     DEV && new WriteFilePlugin(),
@@ -170,15 +166,17 @@ module.exports = {
       syntax: 'scss',
       lintDirtyModulesOnly: true
     }),
-    new Copy([{
-      from: 'src/images',
-      to: `${paths.appBuild}/images`,
-      copyUnmodified: true
-    }, {
-      from: 'src/media',
-      to: `${paths.appBuild}/media`,
-      copyUnmodified: true
-    }]),
+    new Copy({
+      patterns: [{
+        from: `${paths.appSrc}/images`,
+        to: `${paths.appBuild}/images`,
+        noErrorOnMissing: true
+      }, {
+        from: `${paths.appSrc}/media`,
+        to: `${paths.appBuild}/media`,
+        noErrorOnMissing: true
+      }]
+    }),
     !DEV && new ImageminPlugin({
       bail: false,
       cache: false,

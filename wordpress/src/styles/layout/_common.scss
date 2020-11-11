@@ -4,13 +4,13 @@
 
 body {
   @include fluid-type(map-get($font-sizes, 'base'), map-get($font-sizes-max, 'base'));
+
   background-color: $body-bg;
 
   .menu--opened & {
     overflow: hidden;
   }
 }
-
 
 /**
  * Main content containers

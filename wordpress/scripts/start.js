@@ -1,7 +1,6 @@
 'use strict'
 
-const SERVER_ADDRESS = 'http://localhost:9009'
-
+const CONFIG = require('./config')
 const webpack = require('webpack')
 const config = require('./webpack.config')
 const browserSync = require('browser-sync').create()
@@ -15,7 +14,7 @@ browserSync.init({
   port: 4000,
   files: ['**/*.php', 'src/js/**/*.js'],
   proxy: {
-    target: SERVER_ADDRESS,
+    target: `${CONFIG.protocol}://${CONFIG.localServerAddress}${CONFIG.serverSubFolderName ? '/' + CONFIG.serverSubFolderName : ''}`,
     middleware: [
       // converts browsersync into a webpack-dev-server
       webpackDevMiddleware(clientCompiler, {
